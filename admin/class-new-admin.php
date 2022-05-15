@@ -17,7 +17,7 @@
  * @since      1.0.0
  * @package    newtheme-blank
  * @subpackage newtheme-blank/admin
- * @author     Jhon J.R <email@example.com>
+ * @author     Neos Lab <email@example.com>
  * 
  * @property string $plugin_name
  * @property string $version
@@ -71,6 +71,18 @@ class NEW_Admin {
          * clase.
 		 */
 		wp_enqueue_style( $this->plugin_name, NEW_PLUGIN_DIR_URL . 'admin/css/new-admin.css', array(), $this->version, 'all' );
+
+        /**
+         *  Framework Materialize.
+         *  https://materializecss.com/getting-started.html
+		 */
+		wp_enqueue_style( 'new_materiaize_icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), $this->version, 'all' );
+
+        /**
+         *  Framework Materialize.
+         *  https://materializecss.com/icons.html
+		 */
+		wp_enqueue_style( 'new_materiaize_css', NEW_PLUGIN_DIR_URL . 'helpers/materialize/css/materialize.min.css', array(), $this->version, 'all' );
         
     }
     
@@ -92,6 +104,18 @@ class NEW_Admin {
          * clase.
 		 */
         wp_enqueue_script( $this->plugin_name, NEW_PLUGIN_DIR_URL . 'admin/js/new-admin.js', ['jquery'], $this->version, true );
+
+        /**
+         * Libreria sweetalert2
+         * https://sweetalert.js.org/guides/
+		 */
+        wp_enqueue_script( 'new_sweetalert', NEW_PLUGIN_DIR_URL . 'helpers/sweetalert2/sweetalert2.min.js', ['jquery'], $this->version, true );
+
+        /**
+         *  Framework Materialize.
+         *  https://materializecss.com/getting-started.html
+		 */
+        wp_enqueue_script( 'new_materiaize_js', NEW_PLUGIN_DIR_URL . 'helpers/materialize/js/materialize.min.js', ['jquery'], $this->version, true );
         
     }
     
