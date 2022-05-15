@@ -3,7 +3,7 @@
 /**
  * Se activa cuando el plugin va a ser desinstalado
  *
- * @link       http://misitioweb.com
+ * @link       https://neoslab.online
  * @since      1.0.0
  *
  * @package    newtheme_blank

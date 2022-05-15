@@ -6,7 +6,7 @@
  * Una definición de clase que incluye atributos y funciones que se 
  * utilizan tanto del lado del público como del área de administración.
  * 
- * @link       http://misitioweb.com
+ * @link       https://neoslab.online
  * @since      1.0.0
  *
  * @package    newtheme-blank
@@ -20,7 +20,7 @@
  * @since      1.0.0
  * @package    newtheme-blank
  * @subpackage newtheme-blank/includes
- * @author     Jhon J.R <email@example.com>
+ * @author     Neos Lab <contact@neoslab.online>
  * 
  * @property object $cargador
  * @property string $plugin_name
@@ -112,6 +112,12 @@ class NEW_Master {
          * área de administración
 		 */
         require_once NEW_PLUGIN_DIR_PATH . 'admin/class-new-admin.php';
+
+		/**
+		 * La clase responsable de crear los menus en nuestro panel de administracion
+         * área de administración
+		 */
+        require_once NEW_PLUGIN_DIR_PATH . 'inclides/class-new-build-menupage.php';
         
         /**
 		 * La clase responsable de definir todas las acciones en el

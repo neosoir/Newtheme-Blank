@@ -5,7 +5,7 @@
  *
  * Carga y define los archivos de internacionalización de este plugin para que esté listo para su traducción.
  *
- * @link       http://misitioweb.com
+ * @link       https://neoslab.online
  * @since      1.0.0
  *
  * @package    newtheme-blank
@@ -18,7 +18,7 @@
  * @since      1.0.0
  * @package    newtheme-blank
  * @subpackage newtheme-blank/includes
- * @author     Jhon J.R <email@example.com>
+ * @author     Neos Lab <contact@neoslab.online>
  */
 class NEW_i18n {
     

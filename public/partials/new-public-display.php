@@ -5,7 +5,7 @@
   *
   * Este archivo se utiliza para marcar los aspectos del lado del cliente/público para el plugin
   *
-  * @link http://misitioweb.com
+  * @link https://neoslab.online
   * @since desde 1.0.0
   *
   * @package newtheme_blank

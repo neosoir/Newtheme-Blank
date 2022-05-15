@@ -3,7 +3,7 @@
 /**
  * La funcionalidad específica de administración del plugin.
  *
- * @link       http://misitioweb.com
+ * @link       https://neoslab.online
  * @since      1.0.0
  *
  * @package    newtheme-blank
@@ -17,7 +17,7 @@
  * @since      1.0.0
  * @package    newtheme-blank
  * @subpackage newtheme-blank/admin
- * @author     Neos Lab <email@example.com>
+ * @author     Neos Lab <contact@neoslab.online>
  * 
  * @property string $plugin_name
  * @property string $version
@@ -41,6 +41,15 @@ class NEW_Admin {
 	 * @var      string    $version  La versión actual del plugin
 	 */
     private $version;
+
+    /**
+	 * Crear un nuevo menú en la administracion.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $version  La versión actual del plugin
+	 */
+    private $build_menupage;
     
     /**
      * @param string $plugin_name nombre o identificador único de éste plugin.
@@ -117,6 +126,16 @@ class NEW_Admin {
 		 */
         wp_enqueue_script( 'new_materiaize_js', NEW_PLUGIN_DIR_URL . 'helpers/materialize/js/materialize.min.js', ['jquery'], $this->version, true );
         
+    }
+
+    /**
+	 * Registra los menús del área de administración
+	 *
+	 * @since    1.0.0
+     * @access   public
+	 */
+    public function add_menus() {
+
     }
     
 }

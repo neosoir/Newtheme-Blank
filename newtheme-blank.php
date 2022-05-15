@@ -6,7 +6,7 @@
  * todas las dependencias utilizadas por el complemento, registra las funciones 
  * de activación y desactivación y define una función que inicia el complemento.
  *
- * @link                http://misitioweb.com
+ * @link                https://neoslab.online
  * @since               1.0.0
  * @package             newtheme blank
  *

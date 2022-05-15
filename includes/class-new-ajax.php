@@ -3,7 +3,7 @@
 /**
  * Se activa en la activación del plugin
  *
- * @link       http://misitioweb.com
+ * @link       https://neoslab.online
  * @since      1.0.0
  *
  * @package    newtheme-blank
@@ -16,7 +16,7 @@
  * @since      1.0.0
  * @package    newtheme-blank
  * @subpackage newtheme-blank/includes
- * @author     Jhon J.R <email@example.com>
+ * @author     Neos Lab <contact@neoslab.online>
  */
 class NEW_Ajax {
     

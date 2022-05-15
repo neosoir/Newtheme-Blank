@@ -3,7 +3,7 @@
 /**
  * La funcionalidad específica de administración del plugin.
  *
- * @link       http://misitioweb.com
+ * @link       https://neoslab.online
  * @since      1.0.0
  *
  * @package    plugin_name
@@ -17,7 +17,7 @@
  * @since      1.0.0
  * @package    newtheme-blank
  * @subpackage newtheme-blank/admin
- * @author     Jhon J.R <email@example.com>
+ * @author     Neos Lab <contact@neoslab.online>
  * 
  * @property string $plugin_name
  * @property string $version
