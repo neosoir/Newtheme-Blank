@@ -13,7 +13,27 @@
   *
   * Este archivo debe consistir principalmente en HTML con un poco de PHP. 
 */
-echo "Menu ok";
 
 ?>
+
+
+<div class="had-container">
+
+    <div class="row">
+        <div class="col s12">
+            <h5><?= esc_html( get_admin_page_title() ) ?></h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s4">
+            <a class="btn-floating pulse">
+                <i class="material-icons">add</i>
+            </a>
+            <span>Crear nueva tabla de datos</span>
+        </div>
+    </div>
+</div>
+
+
 
