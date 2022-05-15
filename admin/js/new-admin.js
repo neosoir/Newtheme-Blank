@@ -1,11 +1,16 @@
 (function( $ ) {
 	'use strict';
 
-	/**
-	 * Todo el código Javascript orientado a la administración
-	 * debe estar escrito aquí
-	 */
-    
-    
+	// Open modal.
+	$(document).ready( function() {
+
+		$('.modal').modal();
+
+		$('.add-new-table').on('click', function(e) {
+			e.preventDefault();
+			$('#add_new_table').modal('open');
+		});
+
+	});
 
 })( jQuery );

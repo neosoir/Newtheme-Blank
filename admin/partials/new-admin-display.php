@@ -17,6 +17,28 @@
 ?>
 
 
+<!-- Modal Structure -->
+<div id="add_new_table" class="modal">
+    <div class="modal-content">
+        <form action="" method="post">
+            <div class="row">
+                <div class="col s6">
+                    <input id="nombre-tabla" type="text" class="validate">
+                    <label for="nombre">Nombre de la tabla</label>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6">
+                    <button id="crear-tabla" class="btn waves-effect waves-light" type="button" name="action">
+                        crear <i class="material-icons right">add</i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="had-container">
 
     <div class="row">
@@ -27,7 +49,7 @@
 
     <div class="row">
         <div class="col s4">
-            <a class="btn-floating pulse">
+            <a class="add-new-table btn-floating pulse">
                 <i class="material-icons">add</i>
             </a>
             <span>Crear nueva tabla de datos</span>
