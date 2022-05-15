@@ -117,7 +117,7 @@ class NEW_Master {
 		 * La clase responsable de crear los menus en nuestro panel de administracion
          * área de administración
 		 */
-        require_once NEW_PLUGIN_DIR_PATH . 'inclides/class-new-build-menupage.php';
+        require_once NEW_PLUGIN_DIR_PATH . 'includes/class-new-build-menupage.php';
         
         /**
 		 * La clase responsable de definir todas las acciones en el
@@ -170,6 +170,7 @@ class NEW_Master {
         
         $this->cargador->add_action( 'admin_enqueue_scripts', $this->new_admin, 'enqueue_styles' );
         $this->cargador->add_action( 'admin_enqueue_scripts', $this->new_admin, 'enqueue_scripts' );
+		$this->cargador->add_action( 'admin_menu', $this->new_admin, 'add_menus' );
     }
     
     /**

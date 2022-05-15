@@ -47,7 +47,7 @@ class NEW_Admin {
 	 *
 	 * @since    1.0.0
 	 * @access   private
-	 * @var      string    $version  La versión actual del plugin
+	 * @var      string    $build_menupage crea un nuevo menu.
 	 */
     private $build_menupage;
     
@@ -57,8 +57,9 @@ class NEW_Admin {
      */
     public function __construct( $plugin_name, $version ) {
         
-        $this->plugin_name = $plugin_name;
-        $this->version = $version;     
+        $this->plugin_name      = $plugin_name;
+        $this->version          = $version;  
+        $this->build_menupage   = new NEW_Build_Menupage;   
         
     }
     
@@ -68,7 +69,10 @@ class NEW_Admin {
 	 * @since    1.0.0
      * @access   public
 	 */
-    public function enqueue_styles() {
+    public function enqueue_styles( $hook ) {
+
+        if ( $hook != 'toplevel_page_new_data' ) 
+            return;
         
         /**
          * Una instancia de esta clase debe pasar a la función run()
@@ -101,7 +105,10 @@ class NEW_Admin {
 	 * @since    1.0.0
      * @access   public
 	 */
-    public function enqueue_scripts() {
+    public function enqueue_scripts( $hook ) {
+
+        if ( $hook != 'toplevel_page_new_data' ) 
+            return;
         
         /**
          * Una instancia de esta clase debe pasar a la función run()
@@ -135,6 +142,30 @@ class NEW_Admin {
      * @access   public
 	 */
     public function add_menus() {
+
+        $this->build_menupage->add_menu_page(
+            __('Newtheme Datos', 'newtheme-textdomain'),
+            __('Newtheme Datos', 'newtheme-textdomain'),
+            'manage_options',
+            'new_data',
+            [ $this, 'controlador_display_menu' ],
+            'dashicons-id-alt',
+            22
+        );
+
+        $this->build_menupage->run();
+
+    }
+
+    /**
+	 * Creamos rutas hacia otros archivos
+	 * Crearemos dos archivos en la carpeta partials
+	 * @since    1.0.0
+     * @access   public
+	 */
+    public function controlador_display_menu() {
+
+        require_once NEW_PLUGIN_DIR_PATH . 'admin/partials/new-admin-display.php';
 
     }
     

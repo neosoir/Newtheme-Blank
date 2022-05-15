@@ -13,5 +13,7 @@
   *
   * Este archivo debe consistir principalmente en HTML con un poco de PHP. 
 */
+echo "Menu ok";
+
 ?>
 
