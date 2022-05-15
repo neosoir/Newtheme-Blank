@@ -20,6 +20,23 @@
 <!-- Modal Structure -->
 <div id="add_new_table" class="modal">
     <div class="modal-content">
+
+        <!-- Preload of materialize-->
+        <div class="preload">
+            <div class="preloader-wrapper big active">
+                <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Form -->
         <form action="" method="post">
             <div class="row">
                 <div class="col s6">

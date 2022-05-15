@@ -1,6 +1,8 @@
 (function( $ ) {
 	'use strict';
 
+	var preload = $('.preload');
+
 	// Open modal.
 	$(document).ready( function() {
 
@@ -28,12 +30,17 @@
 				
 				// Envio ajax.
 				mensaje.html('');
+				// Preload
+				preload.css('display', 'flex');
 
 			}
 			else {
 
 				if ( !nombre.hasClass('invalid') ) {
 					
+					// Preload
+					preload.css('display', 'none');
+
 					nombre.addClass('invalid');
 					nombre.after('<p id="mensaje">Insertar nombre de la tabla.</p>')
 
