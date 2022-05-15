@@ -19,5 +19,10 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
  * limpiar enlaces permanentes, etc. ) en la desinstalación
  * del plugin
  */
+global $wpdb;
+
+$sql = "DROP TABLE IF EXISTS {$wpdb->prefix}newtheme_data";
+
+$wpdb->query( $sql );
 
 
