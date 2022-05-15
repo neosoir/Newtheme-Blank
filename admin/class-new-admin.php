@@ -165,7 +165,18 @@ class NEW_Admin {
 	 */
     public function controlador_display_menu() {
 
-        require_once NEW_PLUGIN_DIR_PATH . 'admin/partials/new-admin-display.php';
+        if ( 
+            ( $_GET['page'] == 'new_data' ) &&
+            ( $_GET['accion'] == 'edit' ) &&
+            ( isset( $_GET['id'] ) )
+        ) 
+            require_once NEW_PLUGIN_DIR_PATH . 'admin/partials/new-admin-display-edit.php';
+        
+        else 
+            require_once NEW_PLUGIN_DIR_PATH . 'admin/partials/new-admin-display.php';
+        
+
+        
 
     }
     
