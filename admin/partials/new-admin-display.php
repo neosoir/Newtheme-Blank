@@ -55,6 +55,37 @@
             <span>Crear nueva tabla de datos</span>
         </div>
     </div>
+    <div class="row">
+        <div class="col s4">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Shortcode</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Mi primera tabla</td>
+                        <td>[newdatos id="3"]</td>
+                        <td>
+                            <span data-new-id-remove='$id' class='btn btn-floating waves-effect weves-light'>
+                                <i class='tiny material-icons'>mode_edit</i>
+                            </span>
+                        </td>
+                        <td>
+                            <span data-new-id-remove='$id' class='btn btn-floating waves-effect weves-light red darken-1'>
+                                <i class='tiny material-icons'>close</i>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 
 
