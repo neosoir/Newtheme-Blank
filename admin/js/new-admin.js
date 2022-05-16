@@ -2,6 +2,7 @@
 	'use strict';
 
 	var preload = $('.preload');
+	var urledit = "?page=newdata&accion=edit&id=";
 
 	// Open modal.
 	$(document).ready( function() {
@@ -32,6 +33,31 @@
 				mensaje.html('');
 				// Preload
 				preload.css('display', 'flex');
+
+				$.ajax({
+					url: newdata.url,
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						action: 'new_crud_table',
+						nonce: newdata.seguridad,
+						nombre: n
+					},
+					success: function( response ) {
+						if ( response.result ) {
+							
+							urledit += data.insert_id
+							setTimeout( function() {
+								location.href = urledit;
+							}, 1300 );
+						}
+					},
+					error: function ( d, x, v ) {
+						console.log( d );
+						console.log( x );
+						console.log( v );
+					}
+				});
 
 			}
 			else {

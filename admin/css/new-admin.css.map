@@ -1,1 +1,1 @@
-{"version":3,"sourceRoot":"","sources":[],"names":[],"mappings":"","file":"new-admin.css"}
+{"version":3,"sourceRoot":"","sources":["../sass/new-admin.scss"],"names":[],"mappings":"AAGA;EACI;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA;EACA","file":"new-admin.css"}
