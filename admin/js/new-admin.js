@@ -4,11 +4,12 @@
 	/**
 	 * Global varibles.
 	 */
-	var preload = $('.preload');
-	var urledit = "?page=new_data&accion=edit&id=";
-	var marcoImagen = $('.marcoImagen img');
-	var marco;
-	var urlImgUser = $('#selectimgval');
+	var	preload = $('.preload'),
+		urledit = "?page=new_data&accion=edit&id=",
+		marcoImagen = $('.marcoImagen img'),
+		marco,
+		urlImgUser = $('#selectimgval'),
+		idTable = $('#idTable').val();
 
 	/**
 	 * Open modal.
@@ -259,7 +260,52 @@
 					camposInput.removeClass('invalid');
 					camposInput.addClass('valid');
 
-					console.log('todo correcto')
+					preload.css('display', 'flex');
+
+					console.log('todo correcto');
+
+					// Ajax response
+					$.ajax({
+						url: newdata.url,
+						type: 'POST',
+						dataType: 'json',
+						data: {
+							action: 'ajax_add_user',
+							nonce: newdata.seguridad,
+							nombre: nombre,
+							apellido: apellido,
+							email: email,
+							imgVal: imgVal,
+							tipo: 'add'
+						},
+						success: function( response ) {
+							if ( response.result ) {
+								
+								preload.css('display', 'none');
+
+								// Success
+								swal({
+									title: 'Agregado',
+									text: 'El usuario ' + nombre + 'ha sido agregado correctamente',
+									icon: 'success',
+									timer: 4000
+								});
+
+							}
+							else {
+
+								preload.css('display', 'none');
+
+								// Error
+								swal({
+									title: 'Error',
+									text: 'Hubo un error al guardar los datos, por favor intentelo mas tarde',
+									icon: 'error',
+									timer: 4000
+								});
+							}
+						}
+					});
 				}
 
 		});
