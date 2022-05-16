@@ -14,6 +14,15 @@
   * Este archivo debe consistir principalmente en HTML con un poco de PHP. 
 */
 
+
+/**
+ * Consulta sql.
+ */
+
+    $sql = "SELECT id, nombre from " . NEW_TABLE;
+
+    $result = $this->db->get_results( $sql );
+
 ?>
 
 
@@ -85,20 +94,22 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        <td>Mi primera tabla</td>
-                        <td>[newdatos id="3"]</td>
-                        <td>
-                            <span data-new-id-remove='$id' class='btn btn-floating waves-effect weves-light'>
-                                <i class='tiny material-icons'>mode_edit</i>
-                            </span>
-                        </td>
-                        <td>
-                            <span data-new-id-remove='$id' class='btn btn-floating waves-effect weves-light red darken-1'>
-                                <i class='tiny material-icons'>close</i>
-                            </span>
-                        </td>
-                    </tr>
+                    <?php foreach ($result as $key => $value) : ?>
+                        <tr data-table="<?= $value->id ?>">
+                            <td><?= $value->nombre ?></td>
+                            <td>[newdatos id="<?= $value->id ?>"]</td>
+                            <td>
+                                <span class='btn btn-floating waves-effect weves-light' data-new-id-edit="<?= $value->id ?>">
+                                    <i class='tiny material-icons'>mode_edit</i>
+                                </span>
+                            </td>
+                            <td>
+                                <span class='btn btn-floating waves-effect weves-light red darken-1' data-new-id-remove="<?= $value->id ?>">
+                                    <i class='tiny material-icons'>close</i>
+                                </span>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
