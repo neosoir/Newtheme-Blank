@@ -136,8 +136,8 @@ class NEW_Admin {
          * Libreria sweetalert2
          * https://sweetalert.js.org/guides/
 		 */
-        wp_enqueue_script( 'new_sweetalert', NEW_PLUGIN_DIR_URL . 'helpers/sweetalert2/sweetalert2.min.js', ['jquery'], $this->version, true );
-
+        wp_enqueue_script( 'new_sweetalert', NEW_PLUGIN_DIR_URL . 'helpers/sweetalert2/sweetalert.min.js', ['jquery'], $this->version, true );
+                                                                        
         /**
          *  Framework Materialize.
          *  https://materializecss.com/getting-started.html
