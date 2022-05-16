@@ -293,6 +293,31 @@ class NEW_Admin {
         }
     }
     
+
+    /**
+	 * Metodo añadir un nuevo formulario de usuario
+	 * Este metodo esta definido en el ajax del archivo admin/js/new-admin.js
+	 * @since    1.0.0
+     * @access   public
+	 */
+    public function ajax_add_users() {
+
+        check_ajax_referer('newtabdelete_seg', 'nonce');
+
+        if( current_user_can('manage_options') ){
+
+            extract( $_POST, EXTR_OVERWRITE );
+
+            if( $tipo == 'add' ){
+
+
+            }
+
+            echo $json;
+            wp_die();
+
+        }
+    }
 }
 
 
