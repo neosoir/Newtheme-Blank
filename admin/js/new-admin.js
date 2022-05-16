@@ -169,4 +169,13 @@
 
 	});
 
+	/**
+	 * Add users.
+	 */
+	$(document).ready( function() {
+		$( '.addItem' ).on( 'click', function() {
+			$( '#addUpdate' ).modal('open');
+		});
+	});
+
 })( jQuery );

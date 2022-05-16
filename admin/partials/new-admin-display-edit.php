@@ -27,7 +27,7 @@
 
 
 <!-- Modal Structure -->
-<div id="add_new_table" class="modal">
+<div id="addUpdate" class="modal">
     <div class="modal-content">
 
         <!-- Preload of materialize-->
@@ -47,17 +47,39 @@
 
         <!-- Form -->
         <form action="" method="post">
+            
+            <div class="col s6">
+                <input id="nombres" type="text" class="validate">
+                <label for="nombres">Nombre</label>
+            </div>
+        
+            <div class="col s6">
+                <input id="apellidos" type="text" class="validate">
+                <label for="apellidos">Apellidos</label>
+            </div>
+        
+            <div class="col s6">
+                <input id="email" type="text" class="validate">
+                <label for="email">Email</label>
+            </div>
+            
+            <!-- Boton para subir archivos -->
             <div class="row">
-                <div class="col s6">
-                    <input id="nombre-tabla" type="text" class="validate">
-                    <label for="nombre">Nombre de la tabla</label>
+                <div class="file-field input-field col s10">
+                    <div class="btn">
+                        <span>File</span>
+                        <input type="file">
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text">
+                    </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col s6">
-                    <button id="crear-tabla" class="btn waves-effect waves-light" type="button" name="action">
-                        crear <i class="material-icons right">add</i>
+                    <button id="agregar" class="btn waves-effect waves-light" type="button" name="action">
+                        Agregar <i class="material-icons right">add</i>
                     </button>
                 </div>
             </div>
