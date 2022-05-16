@@ -175,7 +175,7 @@ class NEW_Master {
 		$this->cargador->add_action( 'admin_menu', $this->new_admin, 'add_menus' );
 
 		// Ajax
-		$this->cargador->add_action( 'wp_ajax_new_crud_table', $this->new_admin, 'add_menus' );
+		$this->cargador->add_action( 'wp_ajax_new_crud_table', $this->new_admin, 'ajax_crud_table' );
 
     }
     

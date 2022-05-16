@@ -47,7 +47,7 @@
 					success: function( response ) {
 						if ( response.result ) {
 							
-							urledit += data.insert_id
+							urledit += response.insert_id
 							setTimeout( function() {
 								location.href = urledit;
 							}, 1300 );
