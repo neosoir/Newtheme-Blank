@@ -82,6 +82,41 @@
 
 	});
 
+	/**
+	 * Delete table (use sweetalert).
+	 */
+	$(document).ready( function() {
+		$('table').on('click', '[data-new-id-remove]', function() {
+
+			var id 		= $(this).attr('data-new-id-remove');
+			var nombre 	= $('#dataTable' + id + ' [data-new-name]').attr('data-new-name');
+
+			$.ajax({
+				url: newtabdelete.url,
+				type: 'POST',
+				dataType: 'json',
+				data: {
+					action: 'ajax_delete_table',
+					nonce: newtabdelete.seguridad,
+					nombre: nombre,
+					tipo: 'delete'
+				},
+				success: function( response ) {
+					if ( response.result ) {
+						
+						urledit += response.insert_id
+						setTimeout( function() {
+							location.href = urledit;
+						}, 1300 );
+					}
+				}
+				});
+
+			
+		});
+
+	});
+
 
 	/**
 	 * Redirect to edit page (edit button).

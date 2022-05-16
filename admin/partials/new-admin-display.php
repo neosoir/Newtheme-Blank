@@ -95,8 +95,8 @@
 
                 <tbody>
                     <?php foreach ($result as $key => $value) : ?>
-                        <tr data-table="<?= $value->id ?>">
-                            <td><?= $value->nombre ?></td>
+                        <tr id="dataTable<?= $value->id ?>" data-table="<?= $value->id ?>">
+                            <td data-new-name="<?= $value->nombre ?>"><?= $value->nombre ?></td>
                             <td>[newdatos id="<?= $value->id ?>"]</td>
                             <td>
                                 <span class='btn btn-floating waves-effect weves-light' data-new-id-edit="<?= $value->id ?>">

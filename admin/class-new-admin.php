@@ -145,7 +145,8 @@ class NEW_Admin {
         wp_enqueue_script( 'new_materiaize_js', NEW_PLUGIN_DIR_URL . 'helpers/materialize/js/materialize.min.js', ['jquery'], $this->version, true );
         
         /**
-         *  Parametros
+         * Crea una nueva tabla.
+         * Parametros
          * 1. Nombre del archivo
          * 2. Nombre del objeto o varible
          * 3. Array de datos
@@ -158,6 +159,23 @@ class NEW_Admin {
                 'seguridad'     => wp_create_nonce('newdata_seg')
             ]
         );
+
+        /**
+         * Eliminar una tabla
+         * Parametros
+         * 1. Nombre del archivo
+         * 2. Nombre del objeto o varible
+         * 3. Array de datos
+		 */
+        wp_localize_script(
+            $this->plugin_name,
+            'newtabdelete',
+            [
+                'url'           => admin_url('admin-ajax.php'),
+                'seguridad'     => wp_create_nonce('newtabdelete_seg')
+            ]
+        );
+        
     }
 
     /**
