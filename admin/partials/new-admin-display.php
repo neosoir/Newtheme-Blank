@@ -66,13 +66,15 @@
 </div>
 
 <div class="had-container">
-
+    
+    <!--Titulo de la página-->
     <div class="row">
         <div class="col s12">
             <h5><?= esc_html( get_admin_page_title() ) ?></h5>
         </div>
     </div>
 
+    <!-- Boton crear nueva tabla -->
     <div class="row">
         <div class="col s4">
             <a class="add-new-table btn-floating pulse">
@@ -81,6 +83,8 @@
             <span>Crear nueva tabla de datos</span>
         </div>
     </div>
+
+    <!-- Tabla -->
     <div class="row">
         <div class="col s4">
             <table>
