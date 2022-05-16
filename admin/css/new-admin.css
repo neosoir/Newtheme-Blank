@@ -11,4 +11,19 @@
   display: none;
 }
 
+.marcoImagen {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50%;
+  position: relative;
+}
+.marcoImagen img {
+  width: 90px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /*# sourceMappingURL=new-admin.css.map */

@@ -66,14 +66,22 @@
             <!-- Boton para subir archivos -->
             <div class="row">
                 <div class="file-field input-field col s10">
-                    <div class="btn">
-                        <span>File</span>
+                    <div class="btn" id="selectIimg">
+                        <span>Seleccionar imagen</span>
+                        <i class="material-icons right">file_upload</i>
                         <input type="file">
                     </div>
                     <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
+                        <input class="file-path validate" id="selectimgval" type="text">
                     </div>
                 </div>
+                <!-- Mostrar imagen seleccionada -->
+                <div class="col s2">
+                    <div class="marcoImagen">
+                        <img src="http://localhost/_curso02/wp-content/uploads/2020/07/user03.jpg" alt="profile-img">
+                    </div>
+                </div>
+
             </div>
 
             <div class="row">
