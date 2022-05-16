@@ -4,7 +4,9 @@
 	var preload = $('.preload');
 	var urledit = "?page=new_data&accion=edit&id=";
 
-	// Open modal.
+	/**
+	 * Open modal.
+	 */ 
 	$(document).ready( function() {
 
 		$('.modal').modal();
@@ -16,7 +18,9 @@
 
 	});
 
-	// Create table.
+	/**
+	 * Create table.
+	 */
 	$(document).ready( function() {
 
 		$('#crear-tabla').on('click', function(e) {
@@ -74,6 +78,23 @@
 				}
 
 			}
+		});
+
+	});
+
+
+	/**
+	 * Redirect to edit page (edit button).
+	 */
+	$(document).ready( function() {
+		$('table').on('click', '[data-new-id-edit]',function(e) {
+
+			var id = $(this).attr('data-new-id-edit');
+
+			location.href = urledit + id;
+
+			console.log(location.href )
+
 		});
 
 	});
