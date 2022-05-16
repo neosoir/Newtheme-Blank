@@ -2,7 +2,7 @@
 	'use strict';
 
 	var preload = $('.preload');
-	var urledit = "?page=newdata&accion=edit&id=";
+	var urledit = "?page=new_data&accion=edit&id=";
 
 	// Open modal.
 	$(document).ready( function() {
@@ -41,7 +41,8 @@
 					data: {
 						action: 'new_crud_table',
 						nonce: newdata.seguridad,
-						nombre: n
+						nombre: n,
+						tipo: 'add'
 					},
 					success: function( response ) {
 						if ( response.result ) {

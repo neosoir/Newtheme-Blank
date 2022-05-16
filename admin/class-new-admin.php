@@ -50,6 +50,15 @@ class NEW_Admin {
 	 * @var      string    $build_menupage crea un nuevo menu.
 	 */
     private $build_menupage;
+
+    /**
+	 * Habilitar los metodos de consulta de wordpress.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $db variable global base de datos.
+	 */
+    private $db;
     
     /**
      * @param string $plugin_name nombre o identificador único de éste plugin.
@@ -57,6 +66,8 @@ class NEW_Admin {
      */
     public function __construct( $plugin_name, $version ) {
         
+        global $wpdb;
+        $this->db = $wpdb;
         $this->plugin_name      = $plugin_name;
         $this->version          = $version;  
         $this->build_menupage   = new NEW_Build_Menupage;   
@@ -133,6 +144,20 @@ class NEW_Admin {
 		 */
         wp_enqueue_script( 'new_materiaize_js', NEW_PLUGIN_DIR_URL . 'helpers/materialize/js/materialize.min.js', ['jquery'], $this->version, true );
         
+        /**
+         *  Parametros
+         * 1. Nombre del archivo
+         * 2. Nombre del objeto o varible
+         * 3. Array de datos
+		 */
+        wp_localize_script(
+            $this->plugin_name,
+            'newdata',
+            [
+                'url'           => admin_url('admin-ajax.php'),
+                'seguridad'     => wp_create_nonce('newdata_seg')
+            ]
+        );
     }
 
     /**
@@ -175,9 +200,42 @@ class NEW_Admin {
         else 
             require_once NEW_PLUGIN_DIR_PATH . 'admin/partials/new-admin-display.php';
         
+    }
 
-        
+    /**
+	 * Metodo para pasar datos por ajax
+	 * Este metodo esta definido en el ajax del archivo admin/js/new-admin.js
+	 * @since    1.0.0
+     * @access   public
+	 */
+    public function ajax_crud_table() {
 
+        check_ajax_referer('newdata_seg', 'nonce');
+
+        if( current_user_can('manage_options') ){
+
+            extract( $_POST, EXTR_OVERWRITE );
+
+            if( $tipo == 'add' ){
+
+                $columns = [
+                    'nombre' => $nombre,
+                    'data'   => ''
+                ];
+
+                $result = $this->db->insert( NEW_TABLE, $columns );
+
+                $json = json_encode( [
+                    'result'    => $result,
+                    'nombre'    => $nombre,
+                    'insert_id' => $this->db->insert_id
+                ] );
+            }
+
+            echo $json;
+            wp_die();
+
+        }
     }
     
 }

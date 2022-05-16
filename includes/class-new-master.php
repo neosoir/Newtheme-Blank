@@ -170,7 +170,13 @@ class NEW_Master {
         
         $this->cargador->add_action( 'admin_enqueue_scripts', $this->new_admin, 'enqueue_styles' );
         $this->cargador->add_action( 'admin_enqueue_scripts', $this->new_admin, 'enqueue_scripts' );
+
+		// Menu del plugin
 		$this->cargador->add_action( 'admin_menu', $this->new_admin, 'add_menus' );
+
+		// Ajax
+		$this->cargador->add_action( 'wp_ajax_new_crud_table', $this->new_admin, 'add_menus' );
+
     }
     
     /**
