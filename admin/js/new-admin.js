@@ -227,9 +227,9 @@
 
 		$('#agregar').on('click', function() {
 
-			var nom			= $('nombres'),
-		 		ape 		= $('apellidos'),
-		 		ema			= $('email'),
+			var nom			= $('#nombres'),
+		 		ape 		= $('#apellidos'),
+		 		ema			= $('#email'),
 
 				nombre 		= nom.val(),
 		 		apellido 	= ape.val(),
