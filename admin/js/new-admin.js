@@ -220,4 +220,94 @@
 		});
 	});
 
+	/**
+	 * Validate form fiels (create new user).
+	 */
+	$(document).ready(function() {
+
+		$('#agregar').on('click', function() {
+
+			var nom			= $('nombres'),
+		 		ape 		= $('apellidos'),
+		 		ema			= $('email'),
+
+				nombre 		= nom.val(),
+		 		apellido 	= ape.val(),
+		 		email 		= ema.val(),
+		 		imgVal		= urlImgUser.val(),
+
+				camposInput = $('.formularioDataUser input');
+
+				if ( validarCamposVacios( camposInput ) ) {
+					console.log('inputs vacios');
+				}
+				else if( validarEmail( email ) == false ) {
+					console.log('Correo incorrecto');
+					
+					ema.removeClass('valid');
+					ema.addClass('invalid');
+
+					if( validarEmail( email ) == true ) {
+						console.log('Correo correcto');
+						ema.removeClass('invalid');
+						ema.addClass('valid');
+
+					}
+
+				}
+				else {
+					camposInput.removeClass('invalid');
+					camposInput.addClass('valid');
+
+					console.log('todo correcto')
+				}
+
+		});
+
+	});
+
+	/**
+	 * Validate form fiels (create new user).
+	 */
+	function validarCamposVacios( selector ) {
+
+		var inputs	= $( selector ),
+			result 	= false;
+
+		$.each( inputs, function( c, v) {
+
+			var input		= $(v),
+				inputVal 	= input.val();
+
+			if ( ( inputVal == '' ) && ( input.attr('type') != 'file' ) ) {
+
+				if ( !input.hasClass('invalid') ) 
+					input.addClass('invalid');
+
+				result = true;
+				
+			}
+
+		});
+
+		if ( result ) 
+			return true;
+
+		else 
+			return false;
+
+	}
+
+	function validarEmail( email ) {
+
+		var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+		if ( !expr.test( email ) )
+			return false;
+
+		else
+			return true;
+
+	}
+	
 })( jQuery );
