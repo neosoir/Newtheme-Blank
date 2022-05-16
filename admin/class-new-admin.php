@@ -175,7 +175,7 @@ class NEW_Admin {
                 'seguridad'     => wp_create_nonce('newtabdelete_seg')
             ]
         );
-        
+
     }
 
     /**
@@ -221,7 +221,7 @@ class NEW_Admin {
     }
 
     /**
-	 * Metodo para pasar datos por ajax
+	 * Metodo para crear una tabla a travez de ajax
 	 * Este metodo esta definido en el ajax del archivo admin/js/new-admin.js
 	 * @since    1.0.0
      * @access   public
@@ -247,6 +247,37 @@ class NEW_Admin {
                     'result'    => $result,
                     'nombre'    => $nombre,
                     'insert_id' => $this->db->insert_id
+                ] );
+            }
+
+            echo $json;
+            wp_die();
+
+        }
+    }
+
+    /**
+	 * Metodo eliminar una tabla a travez de ajax
+	 * Este metodo esta definido en el ajax del archivo admin/js/new-admin.js
+	 * @since    1.0.0
+     * @access   public
+	 */
+    public function ajax_delete_table() {
+
+        check_ajax_referer('newtabdelete_seg', 'nonce');
+
+        if( current_user_can('manage_options') ){
+
+            extract( $_POST, EXTR_OVERWRITE );
+
+            if( $tipo == 'delete' ){
+
+                $result = $this->db->delete( NEW_TABLE, [ 'id' => $id ], '%d' );
+
+                $json = json_encode( [
+                    'result'    => $result,
+                    'id'        => $id,
+                    'nombre'    => $nombre,
                 ] );
             }
 

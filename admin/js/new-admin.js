@@ -91,26 +91,61 @@
 			var id 		= $(this).attr('data-new-id-remove');
 			var nombre 	= $('#dataTable' + id + ' [data-new-name]').attr('data-new-name');
 
-			$.ajax({
-				url: newtabdelete.url,
-				type: 'POST',
-				dataType: 'json',
-				data: {
-					action: 'ajax_delete_table',
-					nonce: newtabdelete.seguridad,
-					nombre: nombre,
-					tipo: 'delete'
-				},
-				success: function( response ) {
-					if ( response.result ) {
-						
-						urledit += response.insert_id
-						setTimeout( function() {
-							location.href = urledit;
-						}, 1300 );
-					}
+
+
+			swal({
+
+				title: "¿Estás seguro?",
+				text: "Una vez eliminada la tabla no podras recuperarla",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+
+			})
+			.then((willDelete) => {
+
+				if (willDelete) {
+
+					$.ajax({
+						url: 		newtabdelete.url,
+						type: 		'POST',
+						dataType: 	'json',
+						data: {
+							action: 	'ajax_delete_table',
+							nonce: 		newtabdelete.seguridad,
+							nombre: 	nombre,
+							id: 		id,
+							tipo: 		'delete'
+						},
+						success: function( response ) {
+
+							if ( response.result == 1 ) {
+							
+								$("[ data-table='" + response.id + "' ]").remove();
+
+								swal("¡Tu tabla " + response.nombre + " ha sido eliminda!", {
+									icon: "success",
+								  });
+								
+							}
+							else {
+								swal("Lo sentimos, no se podido eliminar tu tabla " + data.nombre + " se ha producido un error en la consulta.", {
+									icon: "error",
+								  });	
+							}
+						}
+					});
+
+				} 
+				else {
+				  swal("La tabla " + nombre + " no ha sido eliminda.");
 				}
-				});
+
+			});
+
+
+
+			
 
 			
 		});

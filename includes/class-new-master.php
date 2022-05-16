@@ -175,7 +175,10 @@ class NEW_Master {
 		$this->cargador->add_action( 'admin_menu', $this->new_admin, 'add_menus' );
 
 		// Ajax
+		// Crear tabla
 		$this->cargador->add_action( 'wp_ajax_new_crud_table', $this->new_admin, 'ajax_crud_table' );
+		// Eliminar tabla
+		$this->cargador->add_action( 'wp_ajax_ajax_delete_table', $this->new_admin, 'ajax_delete_table' );
 
     }
     
