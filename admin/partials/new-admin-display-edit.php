@@ -14,6 +14,12 @@
   * Este archivo debe consistir principalmente en HTML con un poco de PHP. 
 */
 
+/**
+ * Consulta sql.
+ */
+
+$id = $_GET['id'];
+
 
 /**
  * Consulta sql.
@@ -47,7 +53,8 @@
 
         <!-- Form -->
         <form action="" method="post">
-            
+            <!-- Pasar el id de la tabla -->
+            <input type="hidden" name="idItem" id="idItem" value="<?= $id ?>">
             <div class="col s6">
                 <input id="nombres" type="text" class="validate">
                 <label for="nombres">Nombre</label>
