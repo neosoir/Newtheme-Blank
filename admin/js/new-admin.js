@@ -1,8 +1,14 @@
 (function( $ ) {
 	'use strict';
 
+	/**
+	 * Global varibles.
+	 */
 	var preload = $('.preload');
 	var urledit = "?page=new_data&accion=edit&id=";
+	var marcoImagen = $('.marcoImagen img');
+	var marco;
+	var urlImgUser = $('#selectimgval');
 
 	/**
 	 * Open modal.
@@ -152,7 +158,6 @@
 
 	});
 
-
 	/**
 	 * Redirect to edit page (edit button).
 	 */
@@ -170,11 +175,48 @@
 	});
 
 	/**
-	 * Add users.
+	 * Add users modal open.
 	 */
 	$(document).ready( function() {
 		$( '.addItem' ).on( 'click', function() {
 			$( '#addUpdate' ).modal('open');
+		});
+	});
+
+	/**
+	 * Media manager of wordpress to image user.
+	 */
+	$(document).ready( function() {
+		$('#selectimg').on( 'click', function(e) {
+
+			e.preventDefault();
+
+			if ( marco ) {
+				marco.open();
+				return;
+			}
+
+			marco = wp.media({
+				frame: 'select',
+				title: 'Seleccionar imagen para usuario',
+				button: {
+					text: 'Usar esta imagen'
+				},
+				mulplile: false,
+				library: {
+					type: 'image'
+				}
+			});
+
+			marco.on('select', function() {
+
+				var imgUser = marco.state().get('selection').first().toJSON();
+				urlImgUser.val( imgUser.url );
+				marcoImagen.attr('src', imgUser.url );
+
+			});
+
+			marco.open();
 		});
 	});
 

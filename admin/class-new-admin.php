@@ -84,7 +84,13 @@ class NEW_Admin {
 
         if ( $hook != 'toplevel_page_new_data' ) 
             return;
+
+        /**
+         * Gesto multimedia de wordpress
+         */
         
+        wp_enqueue_media();
+
         /**
          * Una instancia de esta clase debe pasar a la función run()
          * definido en NEW_Cargador como todos los ganchos se definen
