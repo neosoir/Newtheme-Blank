@@ -134,6 +134,25 @@ class NEW_CRUD_JSON {
      */
     public function update_user( $ar_user, $idUser, $nombres, $apellidos, $email, $imgUrl ){
         
+        $ar_user = json_decode( $ar_user, true );
+
+        foreach ($ar_user['users'] as $key => $value ) {
+
+            $id = $value['id'];
+
+            if ( $idUser == $id ) {
+                
+                $ar_users['users'][$key]['nombres']     = $nombres;
+                $ar_users['users'][$key]['apellidos']   = $apellidos;
+                $ar_users['users'][$key]['email']       = $email;
+                $ar_users['users'][$key]['imgUrl']      = $imgUrl;
+
+                break;
+            }
+        }
+
+        return $ar_user;
+
     }
 
     /**

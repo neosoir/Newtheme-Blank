@@ -11,6 +11,10 @@
 		urlImgUser 		= $('#selectimgval'),
 		idTable 		= $('#idTable').val();
 
+	var nombres 		= $('#nombres'),
+		apellidos 		= $('#apellidos'),
+		email			= $('#email');
+
 	/**
 	 * Open modal.
 	 */ 
@@ -397,5 +401,32 @@
 		// Add finaly of table
 		$('table tbody').append( output );
 	}
+
+	$(document).ready( function()  {
+
+		// Dynamically target each user.
+		$('table [data-edit]').on('click', function() {
+
+			$('#addUpdate').modal('open');
+
+			var item 	= $(this),
+				id 	 	= item.attr('data-edit');	
+			
+			var tr 		= item.parent().parent(),
+				td1 	= tr.find('td:nth-child(1) img'),
+				td2 	= tr.find('td:nth-child(2)'),
+				td3 	= tr.find('td:nth-child(3)'),
+				td4 	= tr.find('td:nth-child(4)'),
+				src 	= td1.attr('src');
+
+			urlImgUser.val( src );
+			marcoImagen.attr( 'src', src );
+			nombres.val( td2.text() );
+			apellidos.val( td3.text() );
+			email.val( td4.text() );
+
+		});
+
+	});
 	
 })( jQuery );
