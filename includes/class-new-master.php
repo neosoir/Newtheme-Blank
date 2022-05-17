@@ -185,7 +185,7 @@ class NEW_Master {
 		// Eliminar tabla
 		$this->cargador->add_action( 'wp_ajax_ajax_delete_table', $this->new_admin, 'ajax_delete_table' );
 		// Añadir usuario
-		$this->cargador->add_action( 'wp_ajax_ajax_add_user', $this->new_admin, 'ajax_add_user' );
+		$this->cargador->add_action( 'wp_ajax_ajax_add_users', $this->new_admin, 'ajax_add_users' );
 
     }
     
