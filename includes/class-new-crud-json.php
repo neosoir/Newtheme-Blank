@@ -33,6 +33,7 @@ class NEW_CRUD_JSON {
      */
     public function add_user( $data, $nombres, $apellidos, $email, $imgUrl ){
 
+        // Si esta vacio creamos el primer usuario.
         if ( $data == '' ) {
             $data = [
                 'users' => [
@@ -47,10 +48,10 @@ class NEW_CRUD_JSON {
             ];
         }
         else {
-            $user_decode = json_decode( $data, true );
-            $last_user = end( $users_decode['users'] );
-            $last_user_id = $last_user['id'];
-            $insert_user_id = ++$last_user_id;
+            $user_decode        = json_decode( $data, true );
+            $last_user          = end( $users_decode['users'] );
+            $last_user_id       = $last_user['id'];
+            $insert_user_id     = ++$last_user_id;
 
             $user_decode['users'][] = [
                 'id'        => $insert_user_id,

@@ -318,6 +318,7 @@ class NEW_Admin {
 
             extract( $_POST, EXTR_OVERWRITE );
 
+            // SQL Query
             $sql = $this->db->prepare(
                 "SELECT data FROM " . NEW_TABLE . " WHERE id=%d",
                 $idTable
@@ -327,13 +328,17 @@ class NEW_Admin {
 
             if( $tipo == 'add' ){
 
+                // Instance to add_user method
                 $data           = $this->crud_json->add_user( $resultado, $nombres, $apellidos, $email, $imgUrl );
+
+                // Update database
                 $columns        = ['data' => json_encode( $data )];
                 $where          = ['id' => $idTable];
                 $format         = ['%s'];
                 $where_fomart   = ['%d'];
-
                 $result_update = $this->db->update( NEW_TABLE, $columns, $where, $format, $where_fomart );
+                
+                // Extra varibles to ajax response.
                 $last_user = end( $data['users'] );
                 $insert_id = $last_user['id'];
 
