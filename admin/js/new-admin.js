@@ -416,6 +416,9 @@
 		$('table tbody').append( output );
 	}
 
+	/**
+	 * Show the user info in edit button
+	 */
 	$(document).ready( function()  {
 
 		// Dynamically target each user.
@@ -449,6 +452,130 @@
 
 			// Get id
 			$('#actualizar').attr('data-id', id );
+		});
+
+	});
+
+	/**
+	 * Update data user.
+	 */
+	$(document).ready(function() {
+
+		$('#actualizar').on('click', function() {
+
+			// User id
+			var item		= $(this),
+		 		id 		    = item.attr('data-id');
+
+			// Form data.
+			var tr 		= $('table tr[data-user="'+ id +'"]'),
+				td1 	= tr.find('td:nth-child(1) img'),
+				td2 	= tr.find('td:nth-child(2)'),
+				td3 	= tr.find('td:nth-child(3)'),
+				td4 	= tr.find('td:nth-child(4)');
+
+			// User data
+			var nom		= $('#nombres'),
+			ape 		= $('#apellidos'),
+			ema			= $('#email'),
+
+		   	nombres 	= nom.val(),
+			apellidos 	= ape.val(),
+			email 		= ema.val(),
+			imgUrl		= urlImgUser.val(),
+
+		   	camposInput = $('.formularioDataUser input');
+
+
+			if ( validarCamposVacios( camposInput ) ) {
+
+				console.log('inputs vacios');
+
+			}
+			else if( validarEmail( email ) == false ) {
+
+				console.log('Correo incorrecto');
+				
+				ema.removeClass('valid');
+				ema.addClass('invalid');
+				if( validarEmail( email ) == true ) {
+					console.log('Correo correcto');
+					ema.removeClass('invalid');
+					ema.addClass('valid');
+				}
+
+			}
+			else {
+
+				camposInput.removeClass('invalid');
+				camposInput.addClass('valid');
+				preload.css('display', 'flex');
+				console.log('todo correcto');
+
+				// Ajax response
+				$.ajax({
+					url: 		newdata.url,
+					type: 		'POST',
+					dataType: 	'json',
+					data: {
+						action: 	'ajax_add_users',
+						nonce: 		newdata.seguridad,
+						tipo: 		'update',
+						idUser:		id,
+						idTable:    idTable,
+						nombres: 	nombres,
+						apellidos: 	apellidos,
+						email: 		email,
+						imgUrl: 	imgUrl,
+					},
+					success: function( response ) {
+						console.log(response);
+						if ( response.result ) {
+							
+							preload.css('display', 'none');
+							// Success
+							swal({
+								title: 'Actualizado',
+								text: 'El usuario ' + nombres + 'ha sido actualizado correctamente',
+								icon: 'success',
+								timer: 4000
+							});
+
+							console.log(id);
+							console.log(nombres);
+							console.log(apellidos);
+							console.log(email);
+							console.log(imgUrl);
+
+
+							// Update user
+							setTimeout( function(){
+
+								$('#addUpdate').modal('close');
+								td1.attr( 'src', imgUrl );
+								td2.text( nombres );
+								td2.text( apellidos );
+								td2.text( email );
+
+							}, 3000);
+
+						}
+						else {
+							preload.css('display', 'none');
+							// Error
+							swal({
+								title: 'Error',
+								text: 'Hubo un error al actualizar los datos, por favor intentelo mas tarde',
+								icon: 'error',
+								timer: 4000
+							});
+						}
+
+					}
+
+				});
+			}
+
 		});
 
 	});

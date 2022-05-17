@@ -103,7 +103,7 @@ $resultado = $this->db->get_var( $sql );
                     <button id="agregar" class="btn waves-effect waves-light" type="button" name="action">
                         Agregar <i class="material-icons right">add</i>
                     </button>
-                    <button id="actualizar" class="btn waves-effect waves-light" type="button" name="action">
+                    <button id="actualizar" data-id="" class="btn waves-effect waves-light" type="button" name="action">
                         Actualizar <i class="material-icons right">cached</i>
                     </button>
                 </div>

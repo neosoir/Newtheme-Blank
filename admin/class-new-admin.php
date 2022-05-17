@@ -348,6 +348,23 @@ class NEW_Admin {
                     'insert_id' => $insert_id
                 ]);
             }
+            elseif( $tipo == 'update' ){
+
+                // Instance to add_user method
+                $data           = $this->crud_json->update_user( $resultado, $idUser, $nombres, $apellidos, $email, $imgUrl );
+
+                // Update database
+                $columns        = ['data' => json_encode( $data )];
+                $where          = ['id' => $idTable];
+                $format         = ['%s'];
+                $where_fomart   = ['%d'];
+                $result_update = $this->db->update( NEW_TABLE, $columns, $where, $format, $where_fomart );
+
+                $json = json_encode([
+                    'result'    => $result_update,
+                    'json'      => $data,
+                ]);
+            }
 
             echo $json;
             wp_die();
