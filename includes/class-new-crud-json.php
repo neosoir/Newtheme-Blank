@@ -31,7 +31,7 @@ class NEW_CRUD_JSON {
      *
      * @return array
      */
-    public function add_user( $data, $nombres, $apellidos, $email, $imgUrl ){
+    public function add_user( $data, $nombres, $apellidos, $email, $imgUrl ) {
 
         // Si esta vacio creamos el primer usuario.
         if ( $data == '' ) {
@@ -78,8 +78,43 @@ class NEW_CRUD_JSON {
      *
      * @return array
      */
-    public function read_user( $data ){
-        
+    public function read_user( $data ) {
+        if ( $data != '' ) {
+
+            $data =  json_decode( $data, true );
+            $output = '';
+
+            foreach( $data['users'] as $valor ) {
+
+                $id         = $valor['id'];
+                $nombres    = $valor['nombres'];
+                $apellidos  = $valor['apellidos'];
+                $email      = $valor['email'];
+                $imgUrl     = $valor['imgUrl'];
+
+                $output .= "
+                    <tr data-user='$id'>
+                        <td>
+                            <img class='new_media_img' src='$imgUrl' alt='$nombres $apellidos'>
+                        </td>
+                        <td>$nombres</td>
+                        <td>$apellidos</td>
+                        <td>$email</td>
+                        <td>
+                            <span data-edit='$id' class='btn btn-floating waves-effect weves-light'>
+                                <i class='tiny material-icons'>mode_edit</i>
+                            </span>
+                        </td>
+                        <td>
+                            <span data-remove='$id' class='btn btn-floating waves-effect weves-light red darken-1'>
+                                <i class='tiny material-icons'>close</i>
+                            </span>
+                        </td>
+                    </tr>
+                "; 
+            }
+            return $output;
+        }
     }
 
     /**

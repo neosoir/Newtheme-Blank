@@ -15,20 +15,24 @@
 */
 
 /**
- * Consulta sql.
+ * Obtener el parametro de la url.
  */
 
 $id = $_GET['id'];
 
-
 /**
  * Consulta sql.
  */
+$sql = $this->db->prepare("SELECT data FROM " . NEW_TABLE . 
+                            " WHERE id=%d" , $id);
 
-    $sql = "SELECT id, nombre from " . NEW_TABLE;
+$resultado = $this->db->get_var( $sql );
 
-    $result = $this->db->get_results( $sql );
 
+
+/* $sql = $this->db->prepare( "SELECT data FROM " . NEW_TABLE . " WHERE id=%d", $id );
+$resultado = $this->db->get_var( $sql );
+ */
 ?>
 
 
@@ -147,26 +151,7 @@ $id = $_GET['id'];
                 </thead>
 
                 <tbody>
-                    <?php foreach ($result as $key => $value) : ?>
-                        <tr data-user="<?= $value->id ?>">
-                            <td>
-                                <img class="new_media_img" src="http://localhost/_curso02/wp-content/uploads/2020/07/user03.jpg" alt="user-img">
-                            </td>
-                            <td>Maria</td>
-                            <td>Blondy</td>
-                            <td>mar@marazul.com</td>
-                            <td>
-                                <span data-edit="<?= $value->id ?>" class='btn btn-floating waves-effect weves-light'>
-                                    <i class='tiny material-icons'>mode_edit</i>
-                                </span>
-                            </td>
-                            <td>
-                                <span data-remove="<?= $value->id ?>" class='btn btn-floating waves-effect weves-light red darken-1'>
-                                    <i class='tiny material-icons'>close</i>
-                                </span>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
+                    <?= $this->crud_json->read_user( $resultado )  ?>
                 </tbody>
             </table>
         </div>
