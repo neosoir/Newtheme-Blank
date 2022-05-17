@@ -57,30 +57,33 @@ $resultado = $this->db->get_var( $sql );
 
         <!-- Form -->
         <form action="" method="post" class="formularioDataUser">
-            <!-- Pasar el id de la tabla -->
-            <input type="hidden" name="idTable" id="idTable" value="<?= $id ?>">
+            <div class="row">
+                <!-- Pasar el id de la tabla -->
+                <input type="hidden" name="idTable" id="idTable" value="<?= $id ?>">
 
-            <div class="col s6">
-                <input id="nombres" type="text" class="validate">
-                <label for="nombres">Nombre</label>
+                <div class="input-field  col s6">
+                    <input id="nombres" type="text" class="validate">
+                    <label for="nombres">Nombre</label>
+                </div>
+
+                <div class="input-field  col s6">
+                    <input id="apellidos" type="text" class="validate">
+                    <label for="apellidos">Apellidos</label>
+                </div>
+
+                <div class="input-field  col s6">
+                    <input id="email" type="text" class="validate">
+                    <label for="email">Email</label>
+                </div>
             </div>
-        
-            <div class="col s6">
-                <input id="apellidos" type="text" class="validate">
-                <label for="apellidos">Apellidos</label>
-            </div>
-        
-            <div class="col s6">
-                <input id="email" type="text" class="validate">
-                <label for="email">Email</label>
-            </div>
-            
             <!-- Boton para subir archivos -->
             <div class="row">
                 <div class="file-field input-field col s10">
                     <div class="btn" id="selectimg">
-                        <span>Seleccionar imagen</span>
-                        <i class="material-icons right">file_upload</i>
+                        <span>
+                            Seleccionar imagen
+                            <i class="material-icons right">file_upload</i>
+                        </span>
                         <input type="file">
                     </div>
                     <div class="file-path-wrapper">
@@ -90,10 +93,9 @@ $resultado = $this->db->get_var( $sql );
                 <!-- Mostrar imagen seleccionada -->
                 <div class="col s2">
                     <div class="marcoImagen">
-                        <img src="" alt="profile-img">
+                        <img src="">
                     </div>
                 </div>
-
             </div>
 
             <div class="row">
