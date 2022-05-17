@@ -237,7 +237,7 @@
 		 		ema			= $('#email'),
 
 				nombres 	= nom.val(),
-		 		apellido 	= ape.val(),
+		 		apellidos 	= ape.val(),
 		 		email 		= ema.val(),
 		 		imgUrl		= urlImgUser.val(),
 
@@ -278,7 +278,7 @@
 							tipo: 		'add',
 							idTable:    idTable,
 							nombres: 	nombres,
-							apellido: 	apellido,
+							apellidos: 	apellidos,
 							email: 		email,
 							imgUrl: 	imgUrl,
 						},
@@ -302,7 +302,7 @@
 								}, 3000);
 
 								// Call add table function
-								addUserTable( response.insert_id, nombres, apellido, email, imgUrl );
+								addUserTable( response.insert_id, nombres, apellidos, email, imgUrl );
 
 							}
 							else {
