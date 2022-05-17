@@ -137,8 +137,10 @@ $id = $_GET['id'];
             <table>
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Nombre</th>
-                        <th>Shortcode</th>
+                        <th>Apellidos</th>
+                        <th>Email</th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -146,16 +148,20 @@ $id = $_GET['id'];
 
                 <tbody>
                     <?php foreach ($result as $key => $value) : ?>
-                        <tr id="dataTable<?= $value->id ?>" data-table="<?= $value->id ?>">
-                            <td data-new-name="<?= $value->nombre ?>"><?= $value->nombre ?></td>
-                            <td>[newdatos id="<?= $value->id ?>"]</td>
+                        <tr data-user="<?= $value->id ?>">
                             <td>
-                                <span class='btn btn-floating waves-effect weves-light' data-new-id-edit="<?= $value->id ?>">
+                                <img class="new_media_img" src="http://localhost/_curso02/wp-content/uploads/2020/07/user03.jpg" alt="user-img">
+                            </td>
+                            <td>Maria</td>
+                            <td>Blondy</td>
+                            <td>mar@marazul.com</td>
+                            <td>
+                                <span data-edit="<?= $value->id ?>" class='btn btn-floating waves-effect weves-light'>
                                     <i class='tiny material-icons'>mode_edit</i>
                                 </span>
                             </td>
                             <td>
-                                <span class='btn btn-floating waves-effect weves-light red darken-1' data-new-id-remove="<?= $value->id ?>">
+                                <span data-remove="<?= $value->id ?>" class='btn btn-floating waves-effect weves-light red darken-1'>
                                     <i class='tiny material-icons'>close</i>
                                 </span>
                             </td>

@@ -2,7 +2,6 @@ $color: #fff;
 $alfha: 0.75;
 
 // Preloader in add table
-
 .preload {
     position: absolute;
     background: rgba( $color, $alfha );
@@ -16,8 +15,7 @@ $alfha: 0.75;
     display: none;
 }
 
-// User img.
-
+// User img (when create user).
 .marcoImagen {
     width: 80px;
     height: 80px;
@@ -32,4 +30,13 @@ $alfha: 0.75;
         left: 50%;
         transform: translate(-50%, -50%);
     }
+}
+
+// User img (in edit page).
+
+.new_media_img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
 }
