@@ -232,7 +232,7 @@
 		 		ape 		= $('#apellidos'),
 		 		ema			= $('#email'),
 
-				nombre 		= nom.val(),
+				nombres 	= nom.val(),
 		 		apellido 	= ape.val(),
 		 		email 		= ema.val(),
 		 		imgUrl		= urlImgUser.val(),
@@ -273,7 +273,7 @@
 							nonce: 		newdata.seguridad,
 							tipo: 		'add',
 							idTable:    idTable,
-							nombres: 	nombre,
+							nombres: 	nombres,
 							apellido: 	apellido,
 							email: 		email,
 							imgUrl: 	imgUrl,
@@ -286,7 +286,7 @@
 								// Success
 								swal({
 									title: 'Agregado',
-									text: 'El usuario ' + nombre + 'ha sido agregado correctamente',
+									text: 'El usuario ' + nombres + 'ha sido agregado correctamente',
 									icon: 'success',
 									timer: 4000
 								});

@@ -312,7 +312,7 @@ class NEW_Admin {
 	 */
     public function ajax_add_users() {
 
-        check_ajax_referer('newtabdelete_seg', 'nonce');
+        check_ajax_referer('newdata_seg', 'nonce');
 
         if( current_user_can('manage_options') ){
 
