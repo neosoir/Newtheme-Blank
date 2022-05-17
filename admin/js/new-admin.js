@@ -291,6 +291,15 @@
 									timer: 4000
 								});
 
+								// add user
+								setTimeout( function(){
+									$('#addUpdate').modal('close');
+									// Add user to table
+								}, 3000);
+
+								// Call add table function
+								addUserTable( response.insert_id, nombres, apellido, email, imgUrl );
+
 							}
 							else {
 
@@ -344,6 +353,9 @@
 
 	}
 
+	/**
+	 * Validate email
+	 */
 	function validarEmail( email ) {
 
 		var expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -354,6 +366,36 @@
 		else
 			return true;
 
+	}
+
+	/**
+	 * Add new user in table
+	 */
+	function addUserTable(id, nombres, apellidos, email, imgUrl ) {
+
+		var output = `
+				<tr data-user='${id}'>
+					<td>
+						<img class='new_media_img' src='${imgUrl}' alt='${nombres} ${apellidos}'>
+					</td>
+					<td>${nombres}</td>
+					<td>${apellidos}</td>
+					<td>${email}</td>
+					<td>
+						<span data-edit='${id}' class='btn btn-floating waves-effect weves-light'>
+							<i class='tiny material-icons'>mode_edit</i>
+						</span>
+					</td>
+					<td>
+						<span data-remove='${id}' class='btn btn-floating waves-effect weves-light red darken-1'>
+							<i class='tiny material-icons'>close</i>
+						</span>
+					</td>
+				</tr>
+		`; 
+
+		// Add finaly of table
+		$('table tbody').append( output );
 	}
 	
 })( jQuery );
