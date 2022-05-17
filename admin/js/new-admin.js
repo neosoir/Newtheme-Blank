@@ -188,8 +188,9 @@
 			// Show only the add button
 			$('#agregar').css('display', 'block');
 			$('#actualizar').css('display', 'none');
-
 			$( '#addUpdate' ).modal('open');
+			// Remove activate form
+			$('.formularioDataUser label').removeClass('active');
 
 			// Pase emty data in form
 			urlImgUser.val('');
@@ -197,9 +198,6 @@
 			nombres.val('');
 			apellidos.val('');
 			email.val('');
-
-			// Remove activate form
-			$('.formularioDataUser label').removeClass('active');
 
 		});
 	});
@@ -422,7 +420,14 @@
 
 		// Dynamically target each user.
 		$('table [data-edit]').on('click', function() {
+			// Activate form
+			$('.formularioDataUser label').addClass('active');
 
+			// Show only the update button
+			$('#agregar').css('display', 'none');
+			$('#actualizar').css('display', 'block');
+
+			// Modal open
 			$('#addUpdate').modal('open');
 
 			var item 	= $(this),
@@ -434,13 +439,6 @@
 				td3 	= tr.find('td:nth-child(3)'),
 				td4 	= tr.find('td:nth-child(4)'),
 				src 	= td1.attr('src');
-
-			// Activate form
-			$('.formularioDataUser label').addClass('active');
-
-			// Show only the update button
-			$('#agregar').css('display', 'none');
-			$('#actualizar').css('display', 'block');
 		
 			// Load data in form
 			urlImgUser.val( src );
@@ -449,6 +447,8 @@
 			apellidos.val( td3.text() );
 			email.val( td4.text() );
 
+			// Get id
+			$('#actualizar').attr('data-id', id );
 		});
 
 	});
