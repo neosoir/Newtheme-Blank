@@ -184,7 +184,23 @@
 	 */
 	$(document).ready( function() {
 		$( '.addItem' ).on( 'click', function() {
+
+			// Show only the add button
+			$('#agregar').css('display', 'block');
+			$('#actualizar').css('display', 'none');
+
 			$( '#addUpdate' ).modal('open');
+
+			// Pase emty data in form
+			urlImgUser.val('');
+			marcoImagen.attr('src', '');
+			nombres.val('');
+			apellidos.val('');
+			email.val('');
+
+			// Remove activate form
+			$('.formularioDataUser label').removeClass('active');
+
 		});
 	});
 
@@ -419,6 +435,14 @@
 				td4 	= tr.find('td:nth-child(4)'),
 				src 	= td1.attr('src');
 
+			// Activate form
+			$('.formularioDataUser label').addClass('active');
+
+			// Show only the update button
+			$('#agregar').css('display', 'none');
+			$('#actualizar').css('display', 'block');
+		
+			// Load data in form
 			urlImgUser.val( src );
 			marcoImagen.attr( 'src', src );
 			nombres.val( td2.text() );
