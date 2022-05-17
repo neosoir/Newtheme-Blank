@@ -125,6 +125,11 @@ class NEW_Master {
 		 */
         require_once NEW_PLUGIN_DIR_PATH . 'public/class-new-public.php';        
         
+		/**
+		 * La clase responsable de definir todos los metodos
+         * para añadir los datos de los usuarios.
+		 */
+        require_once NEW_PLUGIN_DIR_PATH . 'includes/class-new-crud-json.php';    
     }
     
     /**

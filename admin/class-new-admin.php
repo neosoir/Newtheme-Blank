@@ -52,13 +52,22 @@ class NEW_Admin {
     private $build_menupage;
 
     /**
-	 * Habilitar los metodos de consulta de wordpress.
+	 * Habilitar los metodos de consulta de wordpress
 	 *
 	 * @since    1.0.0
 	 * @access   private
 	 * @var      string    $db variable global base de datos.
 	 */
     private $db;
+
+    /**
+	 * Obtener la clase NEW_CRUD_JSON
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      string    $crud_json instancia del objeto NEW_CRUD_JSON.
+	 */
+    private $crud_json;
     
     /**
      * @param string $plugin_name nombre o identificador único de éste plugin.
@@ -68,6 +77,7 @@ class NEW_Admin {
         
         global $wpdb;
         $this->db = $wpdb;
+        $this->crud_json = new NEW_CRUD_JSON;
         $this->plugin_name      = $plugin_name;
         $this->version          = $version;  
         $this->build_menupage   = new NEW_Build_Menupage;   
@@ -308,9 +318,30 @@ class NEW_Admin {
 
             extract( $_POST, EXTR_OVERWRITE );
 
+            $sql = $this->db->prepare(
+                "SELECT data FROM " . NEW_TABLE . " WHERE id=%d",
+                $idTable
+            );
+
+            $resultado = $this->db->get_var( $sql );
+
             if( $tipo == 'add' ){
 
+                $data           = $this->crud_json->add_user( $resultado, $nombres, $apellidos, $email, $imgUrl );
+                $columns        = ['data' => json_encode( $data )];
+                $where          = ['id' => $idTable];
+                $format         = ['%s'];
+                $where_fomart   = ['%d'];
 
+                $result_update = $this->db->update( NEW_TABLE, $columns, $where, $format, $where_fomart );
+                $last_user = end( $data['users'] );
+                $insert_id = $last_user['id'];
+
+                $json = json_encode([
+                    'result'    => $result_update,
+                    'json'      => $data,
+                    'insert_id' => $insert_id
+                ]);
             }
 
             echo $json;

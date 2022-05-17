@@ -235,7 +235,7 @@
 				nombre 		= nom.val(),
 		 		apellido 	= ape.val(),
 		 		email 		= ema.val(),
-		 		imgVal		= urlImgUser.val(),
+		 		imgUrl		= urlImgUser.val(),
 
 				camposInput = $('.formularioDataUser input');
 
@@ -270,13 +270,14 @@
 						type: 		'POST',
 						dataType: 	'json',
 						data: {
-							action: 	'ajax_add_user',
+							action: 	'ajax_add_users',
 							nonce: 		newdata.seguridad,
 							tipo: 		'add',
-							nombre: 	nombre,
+							idTable:    idTable,
+							nombres: 	nombre,
 							apellido: 	apellido,
 							email: 		email,
-							imgVal: 	imgVal,
+							imgUrl: 	imgUrl,
 						},
 						success: function( response ) {
 							if ( response.result ) {
