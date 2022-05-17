@@ -266,17 +266,17 @@
 
 					// Ajax response
 					$.ajax({
-						url: newdata.url,
-						type: 'POST',
-						dataType: 'json',
+						url: 		newdata.url,
+						type: 		'POST',
+						dataType: 	'json',
 						data: {
-							action: 'ajax_add_user',
-							nonce: newdata.seguridad,
-							nombre: nombre,
-							apellido: apellido,
-							email: email,
-							imgVal: imgVal,
-							tipo: 'add'
+							action: 	'ajax_add_user',
+							nonce: 		newdata.seguridad,
+							tipo: 		'add',
+							nombre: 	nombre,
+							apellido: 	apellido,
+							email: 		email,
+							imgVal: 	imgVal,
 						},
 						success: function( response ) {
 							if ( response.result ) {

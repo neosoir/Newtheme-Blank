@@ -300,7 +300,7 @@ class NEW_Admin {
 	 * @since    1.0.0
      * @access   public
 	 */
-    public function ajax_add_users() {
+    public function ajax_add_user() {
 
         check_ajax_referer('newtabdelete_seg', 'nonce');
 
