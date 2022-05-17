@@ -4,12 +4,12 @@
 	/**
 	 * Global varibles.
 	 */
-	var	preload = $('.preload'),
-		urledit = "?page=new_data&accion=edit&id=",
-		marcoImagen = $('.marcoImagen img'),
+	var	preload 		= $('.preload'),
+		urledit 		= "?page=new_data&accion=edit&id=",
+		marcoImagen 	= $('.marcoImagen img'),
 		marco,
-		urlImgUser = $('#selectimgval'),
-		idTable = $('#idTable').val();
+		urlImgUser 		= $('#selectimgval'),
+		idTable 		= $('#idTable').val();
 
 	/**
 	 * Open modal.
@@ -259,7 +259,6 @@
 				else {
 					camposInput.removeClass('invalid');
 					camposInput.addClass('valid');
-
 					preload.css('display', 'flex');
 
 					console.log('todo correcto');

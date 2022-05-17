@@ -54,7 +54,7 @@ $id = $_GET['id'];
         <!-- Form -->
         <form action="" method="post" class="formularioDataUser">
             <!-- Pasar el id de la tabla -->
-            <input type="hidden" name="idTable" id="idItem" value="<?= $id ?>">
+            <input type="hidden" name="idTable" id="idTable" value="<?= $id ?>">
 
             <div class="col s6">
                 <input id="nombres" type="text" class="validate">
