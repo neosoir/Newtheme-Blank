@@ -142,10 +142,10 @@ class NEW_CRUD_JSON {
 
             if ( $idUser == $id ) {
                 
-                $ar_users['users'][$key]['nombres']     = $nombres;
-                $ar_users['users'][$key]['apellidos']   = $apellidos;
-                $ar_users['users'][$key]['email']       = $email;
-                $ar_users['users'][$key]['imgUrl']      = $imgUrl;
+                $ar_user['users'][$key]['nombres']     = $nombres;
+                $ar_user['users'][$key]['apellidos']   = $apellidos;
+                $ar_user['users'][$key]['email']       = $email;
+                $ar_user['users'][$key]['imgUrl']      = $imgUrl;
 
                 break;
             }
