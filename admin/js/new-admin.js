@@ -312,11 +312,9 @@
 								// add user
 								setTimeout( function(){
 									$('#addUpdate').modal('close');
-									// Add user to table
+									// Call add table function
+									addUserTable( response.insert_id, nombres, apellidos, email, imgUrl );
 								}, 3000);
-
-								// Call add table function
-								addUserTable( response.insert_id, nombres, apellidos, email, imgUrl );
 
 							}
 							else {
@@ -437,10 +435,10 @@
 				id 	 	= item.attr('data-edit');	
 			
 			var tr 		= item.parent().parent(),
-				td1 	= tr.find('td:nth-child(1) img'),
-				td2 	= tr.find('td:nth-child(2)'),
-				td3 	= tr.find('td:nth-child(3)'),
-				td4 	= tr.find('td:nth-child(4)'),
+				td1 	= tr.find( $('td:nth-child(1) img') ),
+				td2 	= tr.find( $('td:nth-child(2)') ),
+				td3 	= tr.find( $('td:nth-child(3)') ),
+				td4 	= tr.find( $('td:nth-child(4)') ),
 				src 	= td1.attr('src');
 		
 			// Load data in form
@@ -554,8 +552,8 @@
 								$('#addUpdate').modal('close');
 								td1.attr( 'src', imgUrl );
 								td2.text( nombres );
-								td2.text( apellidos );
-								td2.text( email );
+								td3.text( apellidos );
+								td4.text( email );
 
 							}, 3000);
 
