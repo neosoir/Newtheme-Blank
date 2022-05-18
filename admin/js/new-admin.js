@@ -450,7 +450,7 @@
 			apellidos.val( td3.text() );
 			email.val( td4.text() );
 
-			// Get id
+			// Get and put id
 			$('#actualizar').attr('data-id', id );
 		});
 

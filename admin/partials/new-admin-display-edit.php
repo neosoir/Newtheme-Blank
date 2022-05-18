@@ -28,11 +28,6 @@ $sql = $this->db->prepare("SELECT data FROM " . NEW_TABLE .
 
 $resultado = $this->db->get_var( $sql );
 
-
-
-/* $sql = $this->db->prepare( "SELECT data FROM " . NEW_TABLE . " WHERE id=%d", $id );
-$resultado = $this->db->get_var( $sql );
- */
 ?>
 
 
