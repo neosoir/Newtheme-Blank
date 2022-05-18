@@ -469,10 +469,10 @@
 
 			// Form data.
 			var tr 		= $('table tr[data-user="'+ id +'"]'),
-				td1 	= tr.find('td:nth-child(1) img'),
-				td2 	= tr.find('td:nth-child(2)'),
-				td3 	= tr.find('td:nth-child(3)'),
-				td4 	= tr.find('td:nth-child(4)');
+				td1 	= tr.find( $('td:nth-child(1) img') ),
+				td2 	= tr.find( $('td:nth-child(2)') ),
+				td3 	= tr.find( $('td:nth-child(3)') ),
+				td4 	= tr.find( $('td:nth-child(4)') );
 
 			// User data
 			var nom		= $('#nombres'),
@@ -521,8 +521,8 @@
 						action: 	'ajax_add_users',
 						nonce: 		newdata.seguridad,
 						tipo: 		'update',
-						idUser:		id,
-						idTable:    idTable,
+						idTable: 	idTable,
+						idUser:   	id,
 						nombres: 	nombres,
 						apellidos: 	apellidos,
 						email: 		email,
