@@ -57,10 +57,11 @@ class NEW_Public {
      */
     public function __construct( $plugin_name, $version ) {
         
+        $this->plugin_name  = $plugin_name;
+        $this->version      = $version;   
+        
         global $wpdb;
         $this->db           = $wpdb;  
-        $this->plugin_name  = $plugin_name;
-        $this->version      = $version;     
         
     }
     
@@ -137,57 +138,57 @@ class NEW_Public {
                 $data   = json_decode( $resultado[0]->data, true );
                 $nombre = $resultado[0]->nombre;
 
-                
+                $output = "
+                    <div id='new_users'>
+                        <div class='new_container'>
+                            <h5>$nombre</h5>
+                            <table class='table'>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Nombres</th>
+                                        <th>Apellidos</th>
+                                        <th>Email</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
-
-            $output = "
-                <div id='new_users'>
-                    <div class='new_container'>
-                        <h5>$nombre</h5>
-                        <table class='table'>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Nombres</th>
-                                    <th>Apellidos</th>
-                                    <th>Email</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-            ";
-
-            foreach( $data['users'] as $valor ){
-
-                $nombres = $valor['nombres'];
-                $apellidos = $valor['apellidos'];
-                $email = $valor['email'];
-                $imgUrl = $valor['imgUrl'];
-
-                $output .= "
-                    <tr>
-                        <td>
-                            <img class='new-img-user' src='$imgUrl' alt='$nombres $apellidos'>
-                        </td>
-                        <td>$nombres</td>
-                        <td>$apellidos</td>
-                        <td>$email</td>
-                    </tr>
                 ";
 
-            }
+                foreach( $data['users'] as $valor ){
 
-            $output .= "
-                            </tbody>
-                        </table>
+                    $nombres = $valor['nombres'];
+                    $apellidos = $valor['apellidos'];
+                    $email = $valor['email'];
+                    $imgUrl = $valor['imgUrl'];
+
+                    $output .= "
+                        <tr>
+                            <td>
+                                <img class='new-img-user' src='$imgUrl' alt='$nombres $apellidos'>
+                            </td>
+                            <td>$nombres</td>
+                            <td>$apellidos</td>
+                            <td>$email</td>
+                        </tr>
+                    ";
+
+                }
+
+                $output .= "
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                </div>
-            ";
+                ";
 
             }
             else {
                 $output = '<h5>No hay informacion con el id ' . $id . '</h5>'; 
             }
+
+            return $output;
+
         }
 
     }
