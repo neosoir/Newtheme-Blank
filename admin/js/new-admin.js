@@ -610,13 +610,15 @@
 					type: 'POST',
 					dataType: 'json',
 					data: {
-						action: 'ajax_add_user',
+						action: 'ajax_add_users',
 						nonce: newdata.seguridad,
 						tipo: 'delete',
 						idTable: idTable,
 						idUser: id,
 					},
 					success: function( response ) {
+
+						console.log(response);
 						
 						if ( response.result ) {
 

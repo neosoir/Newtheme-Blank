@@ -365,6 +365,23 @@ class NEW_Admin {
                     'json'      => $data,
                 ]);
             }
+            elseif( $tipo == 'delete' ){
+
+                // Instance to add_user method
+                $data           = $this->crud_json->delete_user( $resultado, $idUser );
+
+                // Update database
+                $columns        = ['data' => json_encode( $data )];
+                $where          = ['id' => $idTable];
+                $format         = ['%s'];
+                $where_fomart   = ['%d'];
+                $result_delete = $this->db->update( NEW_TABLE, $columns, $where, $format, $where_fomart );
+
+                $json = json_encode([
+                    'result'    => $result_delete,
+                    'json'      => $data,
+                ]);
+            }
 
             echo $json;
             wp_die();

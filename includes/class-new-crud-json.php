@@ -169,6 +169,22 @@ class NEW_CRUD_JSON {
      * @return array
      */
     public function delete_user( $ar_user, $id_delete ){
+
+        $ar_user = json_decode( $ar_user, true );
+
+        foreach( $ar_user['users'] as $key => $value ) {
+
+            $id = $value['id'];
+            
+            if ( $id_delete = $id ) {
+
+                unset( $ar_user['users'][$key] );
+                break;
+
+            }
+
+        }
         
+        return $ar_user;
     }
 }
