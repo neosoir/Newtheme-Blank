@@ -539,13 +539,6 @@
 								timer: 4000
 							});
 
-							console.log(id);
-							console.log(nombres);
-							console.log(apellidos);
-							console.log(email);
-							console.log(imgUrl);
-
-
 							// Update user
 							setTimeout( function(){
 
@@ -584,5 +577,54 @@
 		});
 
 	});
+
+	/**
+	 * Delete user.
+	 */
+	$('[data-remove]').on('click', function() {
+
+		var item 	= $(this),
+			id	 	= item.attr('data-remove'),
+			tr 	 	= $('table tr[data-user="' + id + '"]'),
+			nombre 	= tr.find( $('td:nth-child(2)') ).text();
+
+		console.log(id)
+		console.log(nombre)
+
+		swal({
+			title: 'Esta seguro de eliminar a ' + nombre + '?',
+			text: '¡No podras deshacer esto!',
+			type: 'warning',
+			icon: 'warning',
+			buttons: true,
+			dangerMode: true,
+		})
+		.then((willDelete) => {
+
+			if (condition) {
+
+				swal({
+
+					title: 'El usuario ' + nombre + ' ha sido eliminado',
+					icon: 'success',
+					timer: 4000,
+					
+				});
+
+			}
+			else{
+
+				swal({
+
+					title: 'El usuario no ha sido eliminado',
+
+				});
+
+			}
+
+		})
+
+	});
+
 	
 })( jQuery );

@@ -82,6 +82,9 @@ class NEW_CRUD_JSON {
         if ( $data != '' ) {
 
             $data =  json_decode( $data, true );
+            echo "<pre>";
+            var_dump($data);
+            echo "</pre>";
             $output = '';
 
             foreach( $data['users'] as $valor ) {
