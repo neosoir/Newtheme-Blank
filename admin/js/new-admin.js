@@ -550,6 +550,9 @@
 							setTimeout( function(){
 
 								$('#addUpdate').modal('close');
+								// Animation
+								tr.addClass('bg-animado');
+
 								td1.attr( 'src', imgUrl );
 								td2.text( nombres );
 								td3.text( apellidos );
@@ -557,6 +560,10 @@
 
 							}, 3000);
 
+							// 
+							setTimeout( function() {
+								tr.removeClass('bg-animado');
+							});
 						}
 						else {
 							preload.css('display', 'none');

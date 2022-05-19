@@ -40,3 +40,20 @@ $alfha: 0.75;
     border-radius: 50%;
     object-fit: cover;
 }
+
+// Animation when update user
+
+
+
+.bg-animado{
+    animation: bganimado 3s;
+    -webkit-animation: bganimado 3s;
+}
+@keyframes bganimado{
+    0%{ background: rgb(255, 172, 237); }
+    100%{ background: transparent; }
+}
+@-webkit-keyframes bganimado{
+    0%{ background: rgb(255, 172, 237); }
+    100%{ background: transparent; }
+}
