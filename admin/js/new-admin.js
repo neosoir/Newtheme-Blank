@@ -4,6 +4,8 @@
 	/**
 	 * Global varibles.
 	 */
+	var timer = 2000;
+
 	var	preload 		= $('.preload'),
 		urledit 		= "?page=new_data&accion=edit&id=",
 		marcoImagen 	= $('.marcoImagen img'),
@@ -306,7 +308,7 @@
 									title: 'Agregado',
 									text: 'El usuario ' + nombres + 'ha sido agregado correctamente',
 									icon: 'success',
-									timer: 4000
+									timer: timer
 								});
 
 								// add user
@@ -326,7 +328,7 @@
 									title: 'Error',
 									text: 'Hubo un error al guardar los datos, por favor intentelo mas tarde',
 									icon: 'error',
-									timer: 4000
+									timer: timer
 								});
 							}
 						}
@@ -536,7 +538,7 @@
 								title: 'Actualizado',
 								text: 'El usuario ' + nombres + 'ha sido actualizado correctamente',
 								icon: 'success',
-								timer: 4000
+								timer: timer
 							});
 
 							// Update user
@@ -565,7 +567,7 @@
 								title: 'Error',
 								text: 'Hubo un error al actualizar los datos, por favor intentelo mas tarde',
 								icon: 'error',
-								timer: 4000
+								timer: timer
 							});
 						}
 
@@ -627,8 +629,18 @@
 							swal({
 								title: 'El usuario ' + nombre + ' ha sido eliminado',
 								icon: 'success',
-								timer: 4000,
+								timer: timer,
 							});
+
+							// animation
+							tr.css({
+								'background': 'red',
+								'color': 'white'
+							}).fadeOut(1500);
+
+							setTimeout(function() {
+								tr.remove();
+							}, timer);
 
 						}
 						else {
@@ -639,7 +651,7 @@
 								title: 'Error',
 								text: 'Hubo un error al eliminar el usuario, por favor intentelo mas tarde',
 								icon: 'error',
-								timer: 4000
+								timer: timer
 							});
 
 						}
