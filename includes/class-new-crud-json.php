@@ -48,7 +48,8 @@ class NEW_CRUD_JSON {
             ];
         }
         else {
-            $user_decode        = json_decode( $data, true );
+
+            $users_decode       = json_decode( $data, true );
             $last_user          = end( $users_decode['users'] );
             $last_user_id       = $last_user['id'];
             $insert_user_id     = ++$last_user_id;
@@ -62,6 +63,7 @@ class NEW_CRUD_JSON {
             ];
 
             $data = $user_decode;
+
         }
 
         return $data;
