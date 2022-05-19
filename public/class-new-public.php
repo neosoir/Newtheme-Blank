@@ -94,6 +94,42 @@ class NEW_Public {
         wp_enqueue_script( $this->plugin_name, NEW_PLUGIN_DIR_URL . 'public/js/new-public.js', array( 'jquery' ), $this->version, true );
         
     }
+
+    /**
+	 * Shorcode que muestra los usuarios registrados en la base de datos.
+	 *
+	 * @since    1.0.0
+     * @access   public
+	 */
+    public function new_data_shortcode_id( $atts, $content="" ) {
+        
+        $args = shortcode_atts([
+            'id' => ''
+        ]);
+        
+        extract( $args, EXTR_OVERWRITE );
+
+        if( $id != '' ) {
+
+            $sql =  $this->db->prepare(
+                "SELECT nombre, data FROM " . NEW_TABLE .
+                    " WHERE id=%d", $id
+            );
+            $resultado = $this->db->get_results( $sql );
+
+            if ( ( $resultado[0]->data ) != '' ) {
+                
+                $data   = json_decode( $resultado[0]->data, true );
+                $nombre = $resultado[0]->nombre;
+
+                $output = '';
+            }
+            else {
+                $output = '<h5>No hay informacion con el id ' . $id . '</h5>'; 
+            }
+        }
+
+    }
     
 }
 
