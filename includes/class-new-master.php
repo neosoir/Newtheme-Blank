@@ -200,7 +200,10 @@ class NEW_Master {
         
         $this->cargador->add_action( 'wp_enqueue_scripts', $this->new_public, 'enqueue_styles' );
         $this->cargador->add_action( 'wp_enqueue_scripts', $this->new_public, 'enqueue_scripts' );
-                
+
+		// Shortcode
+		$this->cargador->add_shortcode( 'newdatos', $this->new_public, 'new_data_shortcode_id' );
+
     }
     
     /**
