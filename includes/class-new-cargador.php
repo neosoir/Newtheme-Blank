@@ -44,6 +44,15 @@ class NEW_Cargador {
 	 * @var      array    $actions    Las filtros registrados en WordPress para ejecutar cuando se carga el plugin.
 	 */
     protected $filters;
+
+	/**
+	 * El array de shortcodes registrados en WordPress.
+	 *
+	 * @since    1.0.0
+	 * @access   protected
+	 * @var      array    $actions    Los shortcode registrados en WordPress para ejecutar cuando se carga el plugin.
+	 */
+    protected $shortcodes;
     
     /**
      * Constructor
@@ -54,8 +63,9 @@ class NEW_Cargador {
 	 */
     public function __construct() {
         
-        $this->actions = [];
-        $this->filters = [];
+        $this->actions 		= [];
+        $this->filters 		= [];
+		$this->shortcodes 	= [];
         
     }
     
@@ -94,6 +104,22 @@ class NEW_Cargador {
         $this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
         
     }
+
+	/**
+	 * Añade un shortcode al array ($this->shortcode) a iterar para guardarlos en wordpress.
+	 *
+	 * @since    1.0.0
+     * @access   public
+     * 
+	 * @param    string    $tag             El nombre del shorcode de WordPress que se está registrando.
+	 * @param    object    $component        Una referencia a la instancia del objeto en el que se define el shortcode.
+	 * @param    string    $callback         El nombre de la definición a el método/función.
+	 */
+    public function add_shortcode( $tag, $component, $callback ) {
+        
+        $this->shortcodes = $this->add_s( $this->shortcodes, $tag, $component, $callback );
+        
+    }
     
     /**
 	 * Función de utilidad que se utiliza para registrar las acciones y los ganchos en una sola iterada.
@@ -123,6 +149,31 @@ class NEW_Cargador {
         return $hooks;
         
     }
+
+	/**
+	 * Función de utilidad que se utiliza para registrar los shorcodes en una sola iterada.
+	 *
+	 * @since    1.0.0
+	 * @access   private
+     * 
+	 * @param    array     $shortcodes       La colección de shortcodes que se está registrando.
+	 * @param    string    $tag              El nombre del shorcode de WordPress que se está registrando.
+	 * @param    object    $component        Una referencia a la instancia del objeto en el que se define el shortcode.
+	 * @param    string    $callback         El nombre de la definición a el método/función.
+     * 
+	 * @return   array                       La colección de shortcodes registrados en WordPress para proceder a iterar.
+	 */
+    private function add_s( $shortcodes, $tag, $component, $callback ) {
+        
+        $shortcodes[] = [
+            'tag'           => $tag,
+            'component'     => $component,
+            'callback'      => $callback,
+        ];
+        
+        return $shortcodes;
+        
+    }
     
     /**
 	 * Registre los filtros y acciones con WordPress.
@@ -132,6 +183,7 @@ class NEW_Cargador {
 	 */
     public function run() {
         
+		// Actions
         foreach( $this->actions as $hook_u ) {
             
             extract( $hook_u, EXTR_OVERWRITE );
@@ -140,6 +192,7 @@ class NEW_Cargador {
             
         }
         
+		// Filters
         foreach( $this->filters as $hook_u ) {
             
             extract( $hook_u, EXTR_OVERWRITE );
@@ -147,6 +200,15 @@ class NEW_Cargador {
             add_filter( $hook, [ $component, $callback ], $priority, $accepted_args );
             
         }
+
+		// Shorcodes
+		foreach( $this->shortcodes as $shortcode ) {
+    
+			extract( $shortcode, EXTR_OVERWRITE );
+			
+			add_shortcode( $tag, [ $component, $callback ] );
+			
+		}
         
     }
     
