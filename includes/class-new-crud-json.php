@@ -83,6 +83,9 @@ class NEW_CRUD_JSON {
     public function read_user( $data ) {
         if ( $data != '' ) {
 
+            $data =  json_decode( $data, true );
+            $output = '';
+
             foreach( $data['users'] as $valor ) {
 
                 $id         = $valor['id'];

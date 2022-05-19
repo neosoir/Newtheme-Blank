@@ -601,14 +601,14 @@
 		})
 		.then((willDelete) => {
 
-			if (condition) {
+			if (willDelete) {
 
 				swal({
 
 					title: 'El usuario ' + nombre + ' ha sido eliminado',
 					icon: 'success',
 					timer: 4000,
-					
+
 				});
 
 			}
