@@ -603,11 +603,46 @@
 
 			if (willDelete) {
 
-				swal({
+				// Delete user ajax
+				$.ajax({
 
-					title: 'El usuario ' + nombre + ' ha sido eliminado',
-					icon: 'success',
-					timer: 4000,
+					url: newdata.url,
+					type: 'POST',
+					dataType: 'json',
+					data: {
+						action: 'ajax_add_user',
+						nonce: newdata.seguridad,
+						tipo: 'delete',
+						idTable: idTable,
+						idUser: id,
+					},
+					success: function( response ) {
+						
+						if ( response.result ) {
+
+							// Alert
+							preload.css('display', 'none');
+							swal({
+								title: 'El usuario ' + nombre + ' ha sido eliminado',
+								icon: 'success',
+								timer: 4000,
+							});
+
+						}
+						else {
+
+							// Error
+							preload.css('display', 'none');
+							swal({
+								title: 'Error',
+								text: 'Hubo un error al eliminar el usuario, por favor intentelo mas tarde',
+								icon: 'error',
+								timer: 4000
+							});
+
+						}
+
+					}
 
 				});
 
