@@ -54,7 +54,7 @@ class NEW_CRUD_JSON {
             $last_user_id       = $last_user['id'];
             $insert_user_id     = ++$last_user_id;
 
-            $user_decode['users'][] = [
+            $users_decode['users'][] = [
                 'id'        => $insert_user_id,
                 'nombres'   => $nombres,
                 'apellidos' => $apellidos,
@@ -62,7 +62,7 @@ class NEW_CRUD_JSON {
                 'imgUrl'    => $imgUrl
             ];
 
-            $data = $user_decode;
+            $data = $users_decode;
 
         }
 
@@ -82,12 +82,6 @@ class NEW_CRUD_JSON {
      */
     public function read_user( $data ) {
         if ( $data != '' ) {
-
-            $data =  json_decode( $data, true );
-            echo "<pre>";
-            var_dump($data);
-            echo "</pre>";
-            $output = '';
 
             foreach( $data['users'] as $valor ) {
 
