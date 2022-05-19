@@ -176,7 +176,7 @@ class NEW_CRUD_JSON {
 
             $id = $value['id'];
             
-            if ( $id_delete = $id ) {
+            if ( $id_delete == $id ) {
 
                 unset( $ar_user['users'][$key] );
                 break;
