@@ -203,8 +203,8 @@ class NEW_Admin {
     public function add_menus() {
 
         $this->build_menupage->add_menu_page(
-            __('Newtheme Datos', 'newtheme-textdomain'),
-            __('Newtheme Datos', 'newtheme-textdomain'),
+            __('Users Data', 'newtheme-textdomain'),
+            __('Users Data', 'newtheme-textdomain'),
             'manage_options',
             'new_data',
             [ $this, 'controlador_display_menu' ],
