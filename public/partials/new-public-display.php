@@ -8,8 +8,8 @@
   * @link https://neoslab.online
   * @since desde 1.0.0
   *
-  * @package newtheme_blank
-  * @subpackage newtheme_blank/public/parcials
+  * @package users_data
+  * @subpackage users_data/public/parcials
   */
 ?>
 

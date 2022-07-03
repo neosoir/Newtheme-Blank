@@ -70,7 +70,7 @@ class NEW_Master {
 	 */
     public function __construct() {
         
-        $this->plugin_name = 'newtheme_blank';
+        $this->plugin_name = 'users_data';
         $this->version = '1.0.0';
         
         $this->cargar_dependencias();

@@ -6,7 +6,7 @@
  * @link       https://neoslab.online
  * @since      1.0.0
  *
- * @package    newtheme_blank
+ * @package    users_data
  */
 
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
