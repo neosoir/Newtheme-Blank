@@ -1,22 +1,17 @@
 <?php
 /**
- * Archivo del plugin 
- * Este archivo es leído por WordPress para generar la información del plugin
- * en el área de administración del complemento. Este archivo también incluye 
- * todas las dependencias utilizadas por el complemento, registra las funciones 
- * de activación y desactivación y define una función que inicia el complemento.
  *
  * @link                https://neoslab.online
  * @since               1.0.0
  * @package             newtheme blank
  *
  * @wordpress-plugin
- * Plugin Name:         newtheme blank
- * Plugin URI:          http://miprimerplugin.com
- * Description:         Descripción corta de nuestro plugin
+ * Plugin Name:         User data
+ * Plugin URI:          https://neoslab.online
+ * Description:         Create user data tables and use shortcodes to display in fronted.
  * Version:             1.0.0
  * Author:              Neos Lab
- * Author URI:          http://miurlpersonal.com
+ * Author URI:          https://neoslab.online
  * License:             GPL2
  * License URI:         https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:         newtheme-textdomain
